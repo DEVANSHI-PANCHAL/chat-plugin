@@ -14,7 +14,7 @@ if (!document.getElementById(cssId)) {
 // Add Font Awesome CSS link
 var faLink = document.createElement('link');
 faLink.rel = 'stylesheet';
-faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
 document.head.appendChild(faLink);
  
 var chatbotToggleBtn = '<button id="chatbot-toggle-btn"><i class="fas fa-comment-alt"></i></button>';
