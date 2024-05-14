@@ -79,7 +79,6 @@
 //     }
 // }
 
-
 var cssId = 'chatbot-style';  // you could encode the css path itself to generate id..
 if (!document.getElementById(cssId)) {
     var head  = document.getElementsByTagName('head')[0];
@@ -91,7 +90,7 @@ if (!document.getElementById(cssId)) {
     link.media = 'all';
     head.appendChild(link);
 }
-
+ 
 var chatbotToggleBtn = '<button id="chatbot-toggle-btn"><i class="fas fa-comment-alt"></i></button>';
 var chatPopUp = `<div class="chatbot-popup" id="chatbot-popup">
 <div class="chat-header">
@@ -104,11 +103,11 @@ var chatPopUp = `<div class="chatbot-popup" id="chatbot-popup">
   <button id="send-btn"><i class="far fa-paper-plane"></i></button>
 </div>
 </div>`;
-
-document.body.appendChild(chatPopUp)
-document.body.appendChild(chatbotToggleBtn)
-
-
+ 
+document.body.innerHTML += chatPopUp;
+document.body.innerHTML += chatbotToggleBtn;
+ 
+ 
 const responses = {
     "hello": "Hi there! How can I assist you today?",
     "flight details": "Here you will find information about flight details. <a href='https://www.goindigo.in/web-check-in.html' target='_blank'>Visit Website</a>",
@@ -119,8 +118,8 @@ const responses = {
     "expert": "Great! Please wait a moment while we connect you with an expert.",
     "no": "Okay, if you change your mind just let me know!"
 };
-
-
+ 
+ 
 document.getElementById('chatbot-toggle-btn').addEventListener('click', toggleChatbot);
 document.getElementById('close-btn').addEventListener('click', toggleChatbot);
 document.getElementById('send-btn').addEventListener('click', sendMessage);
@@ -129,12 +128,12 @@ document.getElementById('user-input').addEventListener('keypress', function(e) {
         sendMessage();
     }
 });
-
+ 
 // function toggleChatbot() {
 //     const chatbotPopup = document.getElementById('chatbot-popup');
 //     chatbotPopup.style.display = chatbotPopup.style.display === 'none' ? 'block' : 'none';
 // }
-
+ 
 function toggleChatbot() {
     const chatbotPopup = document.getElementById('chatbot-popup');
     const chatBox = document.getElementById('chat-box');
@@ -147,7 +146,7 @@ function toggleChatbot() {
         chatbotPopup.style.display = 'none';
     }
 }
-
+ 
 function sendMessage() {
     const userInput = document.getElementById('user-input').value.trim();
     if (userInput !== '') {
@@ -156,14 +155,14 @@ function sendMessage() {
         document.getElementById('user-input').value = '';
     }
 }
-
+ 
 function respondToUser(userInput) {
     const response = responses[userInput] || responses["default"];
     setTimeout(function() {
         appendMessage('bot', response);
     }, 500);
 }
-
+ 
 function appendMessage(sender, message) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
